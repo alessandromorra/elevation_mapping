@@ -1,0 +1,9 @@
+point_cloud_topic: "/ascento/realsense_d435i_front/depth/color/points"
+map_frame_id: "ascento/odom_frame"
+robot_base_frame_id: "ascento/base_frame"
+robot_pose_with_covariance_topic: "/ascento/realsense_t265/odom/pose_stamped"
+robot_pose_cache_size: 200
+track_point_frame_id: "ascento/control_frame"
+track_point_x: 0.0
+track_point_y: 0.0
+track_point_z: 0.0
