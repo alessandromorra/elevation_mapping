@@ -7,7 +7,8 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(
-  CATKIN_PACKAGE_DEPENDENCIES 
+  CATKIN_PACKAGE_DEPENDENCIES
+    arc_cpp
     eigen_conversions
     grid_map_core
     grid_map_ros
@@ -23,7 +24,7 @@ set(
     tf_conversions
 )
 
-find_package(catkin REQUIRED 
+find_package(catkin REQUIRED
   COMPONENTS
     ${CATKIN_PACKAGE_DEPENDENCIES}
 )
@@ -102,7 +103,7 @@ target_link_libraries(${PROJECT_NAME}
 #############
 
 install(
-  TARGETS 
+  TARGETS
     ${PROJECT_NAME}
     ${PROJECT_NAME}_pcl_types
     ${PROJECT_NAME}_library
@@ -115,16 +116,16 @@ install(
 )
 
 install(
-  DIRECTORY 
+  DIRECTORY
     include/${PROJECT_NAME}/
-  DESTINATION 
+  DESTINATION
     ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 
 install(
-  DIRECTORY 
+  DIRECTORY
     config
-  DESTINATION 
+  DESTINATION
     ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 

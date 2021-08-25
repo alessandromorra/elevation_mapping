@@ -21,6 +21,8 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <std_srvs/Empty.h>
 #include <tf/transform_listener.h>
+#include <arc_cpp/time/stopwatch.h>
+
 
 // Eigen
 #include <Eigen/Core>
@@ -242,6 +244,7 @@ class ElevationMapping {
 
   //! ROS nodehandle.
   ros::NodeHandle nodeHandle_;
+arc_cpp::time::Stopwatch stopwatch_;
 
  protected:
   //! Input sources.

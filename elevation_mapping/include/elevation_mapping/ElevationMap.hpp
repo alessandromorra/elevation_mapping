@@ -277,6 +277,7 @@ class ElevationMap {
   //! ROS nodehandle.
   ros::NodeHandle nodeHandle_;
 
+
   //! Raw elevation map as grid map.
   grid_map::GridMap rawMap_;
 

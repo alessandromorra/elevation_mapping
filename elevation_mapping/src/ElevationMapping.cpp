@@ -33,6 +33,7 @@ namespace elevation_mapping {
 
 ElevationMapping::ElevationMapping(ros::NodeHandle& nodeHandle)
     : nodeHandle_(nodeHandle),
+      stopwatch_("elevation_map", 100),
       inputSources_(nodeHandle_),
       robotPoseCacheSize_(200),
       map_(nodeHandle),
@@ -290,6 +291,8 @@ void ElevationMapping::visibilityCleanupThread() {
 
 void ElevationMapping::pointCloudCallback(const sensor_msgs::PointCloud2ConstPtr& pointCloudMsg, bool publishPointCloud,
                                           const SensorProcessorBase::Ptr& sensorProcessor_) {
+
+                                            stopwatch_.start();
   ROS_DEBUG("Processing data from: %s", pointCloudMsg->header.frame_id.c_str());
   if (!updatesEnabled_) {
     ROS_WARN_THROTTLE(10, "Updating of elevation map is disabled. (Warning message is throttled, 10s.)");
@@ -396,6 +399,7 @@ void ElevationMapping::pointCloudCallback(const sensor_msgs::PointCloud2ConstPtr
   }
 
   resetMapUpdateTimer();
+stopwatch_.stopAndPrintDuration();
 }
 
 void ElevationMapping::mapUpdateTimerCallback(const ros::TimerEvent&) {
